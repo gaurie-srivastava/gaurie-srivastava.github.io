@@ -5,848 +5,882 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gaurie Srivastava | Actuarial Science</title>
 <meta name="description" content="Gaurie Srivastava — Actuarial Science student specializing in risk modeling, statistics and insurance analytics.">
-
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 <style>
-  :root{
-    --navy:#14213D;
-    --navy-soft:#3F4C6B;
-    --bg:#FBFBF8;
-    --bg-alt:#F2F4F1;
-    --accent:#2C7A72;
-    --accent-dark:#1F5C56;
-    --accent-tint:#E4F0EE;
-    --line:#DDE1DC;
-    --white:#FFFFFF;
-    --radius:10px;
-    --maxw:920px;
-  }
+:root{
+  --navy:#14213D;
+  --navy-soft:#3F4C6B;
+  --bg:#FBFBF8;
+  --bg-alt:#F2F4F1;
+  --accent:#2C7A72;
+  --accent-dark:#1F5C56;
+  --accent-tint:#E4F0EE;
+  --line:#DDE1DC;
+  --white:#FFFFFF;
+  --radius:10px;
+  --maxw:920px;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--navy);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  font-size:16px;
+}
+::selection{ background:var(--accent-tint); color:var(--accent-dark); }
+a{ color:var(--accent); text-decoration:none; }
+a:hover{ color:var(--accent-dark); }
+.mono{
+  font-family:'JetBrains Mono', monospace;
+  letter-spacing:-0.01em;
+}
 
-  *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
+/* ---------- Scroll progress bar ---------- */
+#progress-bar{
+  position:fixed; top:0; left:0; height:3px; width:0%;
+  background:var(--accent);
+  z-index:1000;
+  transition:width 0.1s linear;
+}
 
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--navy);
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    font-size:16px;
-  }
+/* ---------- Skip link (a11y) ---------- */
+.skip-link{
+  position:absolute; left:-999px; top:auto;
+  background:var(--navy); color:#fff; padding:10px 16px;
+  z-index:1200; border-radius:0 0 8px 0;
+}
+.skip-link:focus{ left:0; top:0; }
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
 
-  ::selection{ background:var(--accent-tint); color:var(--accent-dark); }
+/* ---------- Nav ---------- */
+nav{
+  position:sticky; top:0; z-index:900;
+  background:rgba(251,251,248,0.9);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--maxw); margin:0 auto;
+  padding:14px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px;
+}
+.nav-brand{
+  font-family:'Fraunces', serif;
+  font-weight:600; font-size:1.05rem;
+  color:var(--navy);
+  white-space:nowrap;
+}
+.nav-brand .dot{ color:var(--accent); }
+.nav-links{
+  display:flex; gap:22px; list-style:none; margin:0; padding:0;
+}
+.nav-links a{
+  color:var(--navy-soft); font-weight:500; font-size:0.88rem;
+  letter-spacing:0.02em; text-transform:uppercase;
+  position:relative; padding-bottom:4px;
+}
+.nav-links a::after{
+  content:''; position:absolute; left:0; bottom:0;
+  width:0%; height:2px; background:var(--accent);
+  transition:width 0.25s ease;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after{ width:100%; }
+.nav-links a.active{ color:var(--navy); }
+.nav-toggle{
+  display:none; background:none; border:1px solid var(--line);
+  border-radius:8px; width:38px; height:38px;
+  color:var(--navy); font-size:1rem; cursor:pointer;
+}
 
-  a{ color:var(--accent); text-decoration:none; }
-  a:hover{ color:var(--accent-dark); }
+/* ---------- Container ---------- */
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
 
-  .mono{
-    font-family:'JetBrains Mono', monospace;
-    letter-spacing:-0.01em;
-  }
+/* ---------- Header / Hero ---------- */
+header.hero{
+  padding:64px 24px 48px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+header.hero::before{
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(600px 260px at 85% -10%, var(--accent-tint), transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:var(--maxw); margin:0 auto; position:relative;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:40px;
+}
+.hero-text{ flex:1; min-width:0; }
+.hero-photo{
+  flex-shrink:0;
+  width:168px; height:168px;
+  border-radius:50%;
+  padding:5px;
+  background:linear-gradient(135deg, var(--accent), var(--accent-tint));
+  opacity:0; transform:translateY(10px) scale(0.96);
+  animation:riseIn 0.7s ease 0.1s forwards;
+}
+.hero-photo-inner{
+  width:100%; height:100%; border-radius:50%;
+  overflow:hidden;
+  background:var(--white);
+  border:3px solid var(--bg);
+  display:flex; align-items:center; justify-content:center;
+}
+.hero-photo img{
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+.hero-photo-initials{
+  font-family:'Fraunces', serif; font-weight:600;
+  font-size:2.6rem; color:var(--accent-dark);
+}
+.eyebrow{
+  font-family:'JetBrains Mono', monospace;
+  font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--accent-dark);
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:18px;
+  opacity:0; transform:translateY(8px);
+  animation:riseIn 0.6s ease forwards;
+}
+.eyebrow .bar{ width:28px; height:2px; background:var(--accent); display:inline-block; }
+h1.name{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  font-size:clamp(2.4rem, 6vw, 3.6rem);
+  line-height:1.05;
+  margin:0 0 10px;
+  letter-spacing:-0.01em;
+  color:var(--navy);
+  opacity:0; transform:translateY(10px);
+  animation:riseIn 0.7s ease 0.08s forwards;
+}
+.title{
+  font-size:clamp(1.05rem, 2.4vw, 1.3rem);
+  color:var(--navy-soft);
+  font-weight:500;
+  margin:0 0 28px;
+  opacity:0; transform:translateY(10px);
+  animation:riseIn 0.7s ease 0.16s forwards;
+}
+.contact-row{
+  display:flex; flex-wrap:wrap; gap:12px 22px;
+  opacity:0; transform:translateY(10px);
+  animation:riseIn 0.7s ease 0.24s forwards;
+}
+.contact-item{
+  display:flex; align-items:center; gap:9px;
+  font-size:0.93rem; color:var(--navy-soft);
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:8px 14px;
+  border-radius:999px;
+  transition:border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.contact-item i{ color:var(--accent); width:14px; text-align:center; }
+.contact-item:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px -8px rgba(20,33,61,0.25);
+}
+button.contact-item{ font-family:'Inter',sans-serif; cursor:pointer; }
+@keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
 
-  /* ---------- Scroll progress bar ---------- */
-  #progress-bar{
-    position:fixed; top:0; left:0; height:3px; width:0%;
-    background:var(--accent);
-    z-index:1000;
-    transition:width 0.1s linear;
-  }
+/* ---------- Sections ---------- */
+section{ padding:56px 24px; border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:none; }
+section.alt{ background:var(--bg-alt); }
+.section-head{
+  display:flex; align-items:baseline; gap:14px;
+  margin-bottom:30px;
+}
+.section-num{
+  font-family:'JetBrains Mono', monospace;
+  color:var(--accent);
+  font-size:0.85rem;
+}
+h2.section-title{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  font-size:1.65rem;
+  margin:0;
+  color:var(--navy);
+}
+.section-rule{
+  flex:1; height:1px; background:var(--line);
+}
+.reveal{
+  opacity:0; transform:translateY(18px);
+  transition:opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
 
-  /* ---------- Skip link (a11y) ---------- */
-  .skip-link{
-    position:absolute; left:-999px; top:auto;
-    background:var(--navy); color:#fff; padding:10px 16px;
-    z-index:1200; border-radius:0 0 8px 0;
-  }
-  .skip-link:focus{ left:0; top:0; }
+/* ---------- Summary ---------- */
+.summary-text{
+  font-size:1.08rem;
+  color:var(--navy-soft);
+  max-width:70ch;
+}
+.summary-text strong{ color:var(--navy); font-weight:600; }
+.stat-row{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:16px; margin-top:32px;
+}
+.stat{
+  background:var(--white); border:1px solid var(--line);
+  border-radius:var(--radius); padding:18px;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat:hover{ transform:translateY(-3px); box-shadow:0 10px 24px -14px rgba(20,33,61,0.25); }
+.stat .num{
+  font-family:'JetBrains Mono', monospace;
+  font-size:1.5rem; font-weight:600; color:var(--accent-dark);
+  display:block;
+}
+.stat .label{ font-size:0.82rem; color:var(--navy-soft); margin-top:4px; display:block; }
 
-  :focus-visible{
-    outline:2px solid var(--accent);
-    outline-offset:3px;
-  }
+/* ---------- Timeline (experience / leadership) ---------- */
+.timeline{ position:relative; }
+.tl-item{
+  display:grid;
+  grid-template-columns:150px 1px 1fr;
+  gap:0 24px;
+  padding-bottom:36px;
+}
+.tl-item:last-child{ padding-bottom:0; }
+.tl-date{
+  font-family:'JetBrains Mono', monospace;
+  font-size:0.85rem; color:var(--accent-dark);
+  padding-top:3px;
+  text-align:right;
+}
+.tl-rail{ position:relative; background:var(--line); }
+.tl-rail::before{
+  content:''; position:absolute; top:4px; left:50%;
+  width:9px; height:9px; border-radius:50%;
+  background:var(--accent); border:2px solid var(--bg);
+  transform:translateX(-50%);
+  box-shadow:0 0 0 2px var(--accent);
+}
+.tl-content h3{
+  margin:0 0 3px; font-size:1.08rem; font-weight:700; color:var(--navy);
+}
+.tl-content .org{
+  color:var(--accent-dark); font-weight:600; font-size:0.94rem; margin-bottom:10px;
+}
+.tl-content ul{ margin:8px 0 0; padding-left:18px; color:var(--navy-soft); }
+.tl-content li{ margin-bottom:6px; font-size:0.95rem; }
+.tl-content li::marker{ color:var(--accent); }
 
-  /* ---------- Nav ---------- */
-  nav{
-    position:sticky; top:0; z-index:900;
-    background:rgba(251,251,248,0.9);
-    backdrop-filter:saturate(140%) blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:var(--maxw); margin:0 auto;
-    padding:14px 24px;
-    display:flex; align-items:center; justify-content:space-between;
-    gap:16px;
-  }
-  .nav-brand{
-    font-family:'Fraunces', serif;
-    font-weight:600; font-size:1.05rem;
-    color:var(--navy);
-    white-space:nowrap;
-  }
-  .nav-brand .dot{ color:var(--accent); }
+/* ---------- Education ---------- */
+.edu-grid{ display:grid; gap:16px; }
+.edu-card{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px 22px;
+  display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+  flex-wrap:wrap;
+  transition:border-color 0.2s ease, transform .2s ease;
+}
+.edu-card:hover{ border-color:var(--accent); transform:translateY(-2px); }
+.edu-card h3{ margin:0 0 4px; font-size:1.02rem; color:var(--navy); }
+.edu-card .school{ color:var(--navy-soft); font-size:0.92rem; }
+.edu-card .score{
+  font-family:'JetBrains Mono', monospace;
+  background:var(--accent-tint); color:var(--accent-dark);
+  padding:5px 12px; border-radius:999px; font-size:0.86rem; font-weight:600;
+  white-space:nowrap;
+}
+.edu-card .yr{
+  font-family:'JetBrains Mono', monospace;
+  color:var(--navy-soft); font-size:0.82rem; display:block; margin-top:6px;
+}
+
+/* ---------- Certifications ---------- */
+.cert-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:14px;
+}
+.cert-card{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+  padding:16px 18px; display:flex; gap:12px; align-items:flex-start;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.cert-card:hover{ transform:translateY(-3px); box-shadow:0 10px 24px -14px rgba(20,33,61,.25); }
+.cert-card i{ color:var(--accent); font-size:1.1rem; margin-top:2px; }
+.cert-card h4{ margin:0 0 3px; font-size:0.95rem; color:var(--navy); }
+.cert-card .meta{ font-size:0.8rem; color:var(--navy-soft); font-family:'JetBrains Mono',monospace; }
+
+/* ---------- Skills ---------- */
+.skills-block{ margin-bottom:26px; }
+.skills-block:last-child{ margin-bottom:0; }
+.skills-label{
+  font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;
+  color:var(--navy-soft); margin-bottom:14px; font-weight:600;
+}
+.pill-cloud{ display:flex; flex-wrap:wrap; gap:10px; }
+.pill{
+  background:var(--white); border:1px solid var(--line);
+  color:var(--navy); font-size:0.9rem; font-weight:500;
+  padding:9px 16px; border-radius:999px;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:all 0.2s ease;
+  cursor:default;
+}
+.pill i{ color:var(--accent); font-size:0.8rem; }
+.pill:hover{
+  background:var(--accent); color:#fff; border-color:var(--accent);
+  transform:translateY(-3px);
+}
+.pill:hover i{ color:#fff; }
+
+/* ---------- Projects ---------- */
+.project-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+.project-card{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px; display:flex; flex-direction:column; gap:12px;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  text-decoration:none;
+}
+.project-card:hover{
+  transform:translateY(-4px); border-color:var(--accent);
+  box-shadow:0 14px 30px -18px rgba(20,33,61,.3);
+}
+.project-card h3{ margin:0; font-size:1.05rem; color:var(--navy); }
+.project-card p{ margin:0; font-size:0.92rem; color:var(--navy-soft); flex-grow:1; }
+.project-tags{ display:flex; flex-wrap:wrap; gap:8px; }
+.project-tags span{
+  font-family:'JetBrains Mono', monospace; font-size:0.74rem;
+  background:var(--accent-tint); color:var(--accent-dark);
+  padding:4px 10px; border-radius:999px;
+}
+.project-link{
+  display:inline-flex; align-items:center; gap:7px;
+  font-weight:600; font-size:0.9rem; color:var(--accent);
+  margin-top:4px;
+}
+.project-link i{ font-size:0.78rem; transition:transform .2s ease; }
+.project-card:hover .project-link i{ transform:translateX(3px); }
+
+/* ---------- Footer ---------- */
+footer{
+  padding:40px 24px 50px;
+  text-align:center;
+}
+footer .foot-name{
+  font-family:'Fraunces', serif; font-weight:600; color:var(--navy); font-size:1.1rem;
+}
+footer .foot-links{
+  display:flex; justify-content:center; gap:18px; margin:16px 0 20px; flex-wrap:wrap;
+}
+footer .foot-links a{
+  color:var(--navy-soft); font-size:1.1rem;
+  width:38px; height:38px; border:1px solid var(--line); border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  transition:all 0.2s ease;
+}
+footer .foot-links a:hover{ color:#fff; background:var(--accent); border-color:var(--accent); transform:translateY(-3px); }
+footer .copyright{ font-size:0.8rem; color:var(--navy-soft); font-family:'JetBrains Mono',monospace; }
+#toast{
+  position:fixed; bottom:24px; left:50%; transform:translate(-50%,20px);
+  background:var(--navy); color:#fff; padding:10px 18px; border-radius:8px;
+  font-size:0.85rem; opacity:0; pointer-events:none;
+  transition:opacity 0.25s ease, transform 0.25s ease;
+  z-index:1100;
+}
+#toast.show{ opacity:1; transform:translate(-50%,0); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px){
+  .hero-inner{ flex-direction:column-reverse; text-align:center; gap:24px; }
+  .contact-row{ justify-content:center; }
+  .hero-photo{ width:128px; height:128px; }
   .nav-links{
-    display:flex; gap:22px; list-style:none; margin:0; padding:0;
+    position:fixed; top:62px; right:0; left:0;
+    background:var(--bg); border-bottom:1px solid var(--line);
+    flex-direction:column; gap:0; padding:8px 0;
+    transform:translateY(-130%); transition:transform 0.25s ease;
   }
-  .nav-links a{
-    color:var(--navy-soft); font-weight:500; font-size:0.88rem;
-    letter-spacing:0.02em; text-transform:uppercase;
-    position:relative; padding-bottom:4px;
-  }
-  .nav-links a::after{
-    content:''; position:absolute; left:0; bottom:0;
-    width:0%; height:2px; background:var(--accent);
-    transition:width 0.25s ease;
-  }
-  .nav-links a:hover::after,
-  .nav-links a.active::after{ width:100%; }
-  .nav-links a.active{ color:var(--navy); }
-
-  .nav-toggle{
-    display:none; background:none; border:1px solid var(--line);
-    border-radius:8px; width:38px; height:38px;
-    color:var(--navy); font-size:1rem; cursor:pointer;
-  }
-
-  /* ---------- Container ---------- */
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
-
-  /* ---------- Header / Hero ---------- */
-  header.hero{
-    padding:64px 24px 48px;
-    border-bottom:1px solid var(--line);
-    position:relative;
-    overflow:hidden;
-  }
-  header.hero::before{
-    content:'';
-    position:absolute; inset:0;
-    background:
-      radial-gradient(600px 260px at 85% -10%, var(--accent-tint), transparent 70%);
-    pointer-events:none;
-  }
-  .hero-inner{
-    max-width:var(--maxw); margin:0 auto; position:relative;
-    display:flex; align-items:center; justify-content:space-between;
-    gap:40px;
-  }
-  .hero-text{ flex:1; min-width:0; }
-
-  .hero-photo{
-    flex-shrink:0;
-    width:168px; height:168px;
-    border-radius:50%;
-    padding:5px;
-    background:linear-gradient(135deg, var(--accent), var(--accent-tint));
-    opacity:0; transform:translateY(10px) scale(0.96);
-    animation:riseIn 0.7s ease 0.1s forwards;
-  }
-  .hero-photo-inner{
-    width:100%; height:100%; border-radius:50%;
-    overflow:hidden;
-    background:var(--white);
-    border:3px solid var(--bg);
-    display:flex; align-items:center; justify-content:center;
-  }
-  .hero-photo img{
-    width:100%; height:100%; object-fit:cover; display:block;
-  }
-  .hero-photo-initials{
-    font-family:'Fraunces', serif; font-weight:600;
-    font-size:2.6rem; color:var(--accent-dark);
-  }
-  .eyebrow{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
-    color:var(--accent-dark);
-    display:flex; align-items:center; gap:10px;
-    margin-bottom:18px;
-    opacity:0; transform:translateY(8px);
-    animation:riseIn 0.6s ease forwards;
-  }
-  .eyebrow .bar{ width:28px; height:2px; background:var(--accent); display:inline-block; }
-
-  h1.name{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:clamp(2.4rem, 6vw, 3.6rem);
-    line-height:1.05;
-    margin:0 0 10px;
-    letter-spacing:-0.01em;
-    color:var(--navy);
-    opacity:0; transform:translateY(10px);
-    animation:riseIn 0.7s ease 0.08s forwards;
-  }
-  .title{
-    font-size:clamp(1.05rem, 2.4vw, 1.3rem);
-    color:var(--navy-soft);
-    font-weight:500;
-    margin:0 0 28px;
-    opacity:0; transform:translateY(10px);
-    animation:riseIn 0.7s ease 0.16s forwards;
-  }
-
-  .contact-row{
-    display:flex; flex-wrap:wrap; gap:12px 22px;
-    opacity:0; transform:translateY(10px);
-    animation:riseIn 0.7s ease 0.24s forwards;
-  }
-  .contact-item{
-    display:flex; align-items:center; gap:9px;
-    font-size:0.93rem; color:var(--navy-soft);
-    background:var(--white);
-    border:1px solid var(--line);
-    padding:8px 14px;
-    border-radius:999px;
-    transition:border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .contact-item i{ color:var(--accent); width:14px; text-align:center; }
-  .contact-item:hover{
-    border-color:var(--accent);
-    transform:translateY(-2px);
-    box-shadow:0 6px 16px -8px rgba(20,33,61,0.25);
-  }
-  button.contact-item{ font-family:'Inter',sans-serif; cursor:pointer; }
-
-  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
-
-  /* ---------- Sections ---------- */
-  section{ padding:56px 24px; border-bottom:1px solid var(--line); }
-  section:last-of-type{ border-bottom:none; }
-  section.alt{ background:var(--bg-alt); }
-
-  .section-head{
-    display:flex; align-items:baseline; gap:14px;
-    margin-bottom:30px;
-  }
-  .section-num{
-    font-family:'JetBrains Mono', monospace;
-    color:var(--accent);
-    font-size:0.85rem;
-  }
-  h2.section-title{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.65rem;
-    margin:0;
-    color:var(--navy);
-  }
-  .section-rule{
-    flex:1; height:1px; background:var(--line);
-  }
-
-  .reveal{
-    opacity:0; transform:translateY(18px);
-    transition:opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.is-visible{ opacity:1; transform:translateY(0); }
-
-  /* ---------- Summary ---------- */
-  .summary-text{
-    font-size:1.08rem;
-    color:var(--navy-soft);
-    max-width:70ch;
-  }
-  .summary-text strong{ color:var(--navy); font-weight:600; }
-
-  .stat-row{
-    display:grid; grid-template-columns:repeat(3,1fr);
-    gap:16px; margin-top:32px;
-  }
-  .stat{
-    background:var(--white); border:1px solid var(--line);
-    border-radius:var(--radius); padding:18px;
-    transition:transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .stat:hover{ transform:translateY(-3px); box-shadow:0 10px 24px -14px rgba(20,33,61,0.25); }
-  .stat .num{
-    font-family:'JetBrains Mono', monospace;
-    font-size:1.5rem; font-weight:600; color:var(--accent-dark);
-    display:block;
-  }
-  .stat .label{ font-size:0.82rem; color:var(--navy-soft); margin-top:4px; display:block; }
-
-  /* ---------- Timeline (experience / leadership) ---------- */
-  .timeline{ position:relative; }
-  .tl-item{
-    display:grid;
-    grid-template-columns:150px 1px 1fr;
-    gap:0 24px;
-    padding-bottom:36px;
-  }
-  .tl-item:last-child{ padding-bottom:0; }
-  .tl-date{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.85rem; color:var(--accent-dark);
-    padding-top:3px;
-    text-align:right;
-  }
-  .tl-rail{ position:relative; background:var(--line); }
-  .tl-rail::before{
-    content:''; position:absolute; top:4px; left:50%;
-    width:9px; height:9px; border-radius:50%;
-    background:var(--accent); border:2px solid var(--bg);
-    transform:translateX(-50%);
-    box-shadow:0 0 0 2px var(--accent);
-  }
-  .tl-content h3{
-    margin:0 0 3px; font-size:1.08rem; font-weight:700; color:var(--navy);
-  }
-  .tl-content .org{
-    color:var(--accent-dark); font-weight:600; font-size:0.94rem; margin-bottom:10px;
-  }
-  .tl-content ul{ margin:8px 0 0; padding-left:18px; color:var(--navy-soft); }
-  .tl-content li{ margin-bottom:6px; font-size:0.95rem; }
-  .tl-content li::marker{ color:var(--accent); }
-
-  /* ---------- Education ---------- */
-  .edu-grid{ display:grid; gap:16px; }
-  .edu-card{
-    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
-    padding:20px 22px;
-    display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
-    flex-wrap:wrap;
-    transition:border-color 0.2s ease, transform .2s ease;
-  }
-  .edu-card:hover{ border-color:var(--accent); transform:translateY(-2px); }
-  .edu-card h3{ margin:0 0 4px; font-size:1.02rem; color:var(--navy); }
-  .edu-card .school{ color:var(--navy-soft); font-size:0.92rem; }
-  .edu-card .score{
-    font-family:'JetBrains Mono', monospace;
-    background:var(--accent-tint); color:var(--accent-dark);
-    padding:5px 12px; border-radius:999px; font-size:0.86rem; font-weight:600;
-    white-space:nowrap;
-  }
-  .edu-card .yr{
-    font-family:'JetBrains Mono', monospace;
-    color:var(--navy-soft); font-size:0.82rem; display:block; margin-top:6px;
-  }
-
-  /* ---------- Certifications ---------- */
-  .cert-grid{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:14px;
-  }
-  .cert-card{
-    background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
-    padding:16px 18px; display:flex; gap:12px; align-items:flex-start;
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .cert-card:hover{ transform:translateY(-3px); box-shadow:0 10px 24px -14px rgba(20,33,61,.25); }
-  .cert-card i{ color:var(--accent); font-size:1.1rem; margin-top:2px; }
-  .cert-card h4{ margin:0 0 3px; font-size:0.95rem; color:var(--navy); }
-  .cert-card .meta{ font-size:0.8rem; color:var(--navy-soft); font-family:'JetBrains Mono',monospace; }
-
-  /* ---------- Skills ---------- */
-  .skills-block{ margin-bottom:26px; }
-  .skills-block:last-child{ margin-bottom:0; }
-  .skills-label{
-    font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;
-    color:var(--navy-soft); margin-bottom:14px; font-weight:600;
-  }
-  .pill-cloud{ display:flex; flex-wrap:wrap; gap:10px; }
-  .pill{
-    background:var(--white); border:1px solid var(--line);
-    color:var(--navy); font-size:0.9rem; font-weight:500;
-    padding:9px 16px; border-radius:999px;
-    display:inline-flex; align-items:center; gap:8px;
-    transition:all 0.2s ease;
-    cursor:default;
-  }
-  .pill i{ color:var(--accent); font-size:0.8rem; }
-  .pill:hover{
-    background:var(--accent); color:#fff; border-color:var(--accent);
-    transform:translateY(-3px);
-  }
-  .pill:hover i{ color:#fff; }
-
-  /* ---------- Footer ---------- */
-  footer{
-    padding:40px 24px 50px;
-    text-align:center;
-  }
-  footer .foot-name{
-    font-family:'Fraunces', serif; font-weight:600; color:var(--navy); font-size:1.1rem;
-  }
-  footer .foot-links{
-    display:flex; justify-content:center; gap:18px; margin:16px 0 20px; flex-wrap:wrap;
-  }
-  footer .foot-links a{
-    color:var(--navy-soft); font-size:1.1rem;
-    width:38px; height:38px; border:1px solid var(--line); border-radius:50%;
-    display:inline-flex; align-items:center; justify-content:center;
-    transition:all 0.2s ease;
-  }
-  footer .foot-links a:hover{ color:#fff; background:var(--accent); border-color:var(--accent); transform:translateY(-3px); }
-  footer .copyright{ font-size:0.8rem; color:var(--navy-soft); font-family:'JetBrains Mono',monospace; }
-
-  #toast{
-    position:fixed; bottom:24px; left:50%; transform:translate(-50%,20px);
-    background:var(--navy); color:#fff; padding:10px 18px; border-radius:8px;
-    font-size:0.85rem; opacity:0; pointer-events:none;
-    transition:opacity 0.25s ease, transform 0.25s ease;
-    z-index:1100;
-  }
-  #toast.show{ opacity:1; transform:translate(-50%,0); }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 720px){
-    .hero-inner{ flex-direction:column-reverse; text-align:center; gap:24px; }
-    .contact-row{ justify-content:center; }
-    .hero-photo{ width:128px; height:128px; }
-    .nav-links{
-      position:fixed; top:62px; right:0; left:0;
-      background:var(--bg); border-bottom:1px solid var(--line);
-      flex-direction:column; gap:0; padding:8px 0;
-      transform:translateY(-130%); transition:transform 0.25s ease;
-    }
-    .nav-links.open{ transform:translateY(0); }
-    .nav-links li{ width:100%; }
-    .nav-links a{ display:block; padding:14px 24px; }
-    .nav-links a::after{ display:none; }
-    .nav-toggle{ display:block; }
-
-    header.hero{ padding:48px 20px 36px; }
-    section{ padding:44px 20px; }
-
-    .stat-row{ grid-template-columns:1fr; }
-    .tl-item{ grid-template-columns:22px 1px 1fr; }
-    .tl-date{ grid-column:1 / -1; text-align:left; order:-1; margin-bottom:6px; }
-    .tl-rail{ display:none; }
-    .edu-card{ flex-direction:column; }
-    .edu-card .score{ align-self:flex-start; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
-  }
+  .nav-links.open{ transform:translateY(0); }
+  .nav-links li{ width:100%; }
+  .nav-links a{ display:block; padding:14px 24px; }
+  .nav-links a::after{ display:none; }
+  .nav-toggle{ display:block; }
+  header.hero{ padding:48px 20px 36px; }
+  section{ padding:44px 20px; }
+  .stat-row{ grid-template-columns:1fr; }
+  .tl-item{ grid-template-columns:22px 1px 1fr; }
+  .tl-date{ grid-column:1 / -1; text-align:left; order:-1; margin-bottom:6px; }
+  .tl-rail{ display:none; }
+  .edu-card{ flex-direction:column; }
+  .edu-card .score{ align-self:flex-start; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
 </style>
 </head>
 <body>
-
 <a href="#main" class="skip-link">Skip to content</a>
 <div id="progress-bar"></div>
 
 <nav>
-  <div class="nav-inner">
-    <div class="nav-brand">Gaurie<span class="dot">.</span>S</div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#summary">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#leadership">Leadership</a></li>
-      <li><a href="#skills">Skills</a></li>
-    </ul>
-  </div>
+<div class="nav-inner">
+<div class="nav-brand">Gaurie<span class="dot">.</span>S</div>
+<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+<i class="fa-solid fa-bars"></i>
+</button>
+<ul class="nav-links" id="navLinks">
+<li><a href="#summary">About</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#leadership">Leadership</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+</ul>
+</div>
 </nav>
 
 <main id="main">
+<header class="hero">
+<div class="hero-inner">
+<div class="hero-text">
+<div class="eyebrow"><span class="bar"></span> Actuarial Science &middot; Risk &amp; Insurance</div>
+<h1 class="name">Gaurie Srivastava</h1>
+<p class="title">Actuarial Science Student — Life Insurance, Risk Modeling &amp; Financial Analytics</p>
+<div class="contact-row">
+<button class="contact-item" id="emailBtn" type="button" title="Click to copy email">
+<i class="fa-solid fa-envelope"></i> gauriesrivastava@gmail.com
+</button>
+<a class="contact-item" href="tel:+917982583477">
+<i class="fa-solid fa-phone"></i> +91 79825 83477
+</a>
+<span class="contact-item">
+<i class="fa-solid fa-location-dot"></i> Noida, Uttar Pradesh, India
+</span>
+</div>
+</div>
 
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="eyebrow"><span class="bar"></span> Actuarial Science &middot; Risk &amp; Insurance</div>
-        <h1 class="name">Gaurie Srivastava</h1>
-        <p class="title">Actuarial Science Student — Life Insurance, Risk Modeling &amp; Financial Analytics</p>
-        <div class="contact-row">
-          <button class="contact-item" id="emailBtn" type="button" title="Click to copy email">
-            <i class="fa-solid fa-envelope"></i> gauriesrivastava@gmail.com
-          </button>
-          <a class="contact-item" href="tel:+917982583477">
-            <i class="fa-solid fa-phone"></i> +91 79825 83477
-          </a>
-          <span class="contact-item">
-            <i class="fa-solid fa-location-dot"></i> Noida, Uttar Pradesh, India
-          </span>
-        </div>
-      </div>
+<!--
+PROFILE PHOTO:
+Put your photo file in the same folder as this index.html and name it "profile.jpg"
+(or change the src below to match your filename, e.g. "profile.png").
+If the image fails to load, your initials show automatically instead.
+-->
+<div class="hero-photo">
+<div class="hero-photo-inner">
+<img src="profile.png" alt="Gaurie Srivastava" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="hero-photo-initials" style="display:none;">GS</div>
+</div>
+</div>
+</div>
+</header>
 
-      <!--
-        PROFILE PHOTO:
-        Put your photo file in the same folder as this index.html and name it "profile.jpg"
-        (or change the src below to match your filename, e.g. "profile.png").
-        If the image fails to load, your initials show automatically instead.
-      -->
-      <div class="hero-photo">
-        <div class="hero-photo-inner">
-          <img src="profile.png" alt="Gaurie Srivastava" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="hero-photo-initials" style="display:none;">GS</div>
-        </div>
-      </div>
-    </div>
-  </header>
+<section id="summary">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="section-num">01</span>
+<h2 class="section-title">About</h2>
+<span class="section-rule"></span>
+</div>
+<p class="summary-text reveal">
+Motivated actuarial science student with a keen interest in <strong>life insurance, risk modeling, and financial analytics</strong>.
+Experienced working with data using R and applying actuarial concepts to practical problems. Known for strong
+problem-solving abilities, consistency in exam preparation, and active involvement in academic initiatives —
+looking to build a career in actuarial science through meaningful internship opportunities.
+</p>
+<div class="stat-row">
+<div class="stat reveal">
+<span class="num mono">5</span>
+<span class="label">Actuarial papers cleared</span>
+</div>
+<div class="stat reveal">
+<span class="num mono">8.98</span>
+<span class="label">M.Sc SGPA</span>
+</div>
+<div class="stat reveal">
+<span class="num mono">2</span>
+<span class="label">Insurance internships</span>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="summary">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="section-num">01</span>
-        <h2 class="section-title">About</h2>
-        <span class="section-rule"></span>
-      </div>
-      <p class="summary-text reveal">
-        Motivated actuarial science student with a keen interest in <strong>life insurance, risk modeling, and financial analytics</strong>.
-        Experienced working with data using R and applying actuarial concepts to practical problems. Known for strong
-        problem-solving abilities, consistency in exam preparation, and active involvement in academic initiatives —
-        looking to build a career in actuarial science through meaningful internship opportunities.
-      </p>
-      <div class="stat-row">
-        <div class="stat reveal">
-          <span class="num mono">5</span>
-          <span class="label">Actuarial papers cleared</span>
-        </div>
-        <div class="stat reveal">
-          <span class="num mono">8.98</span>
-          <span class="label">M.Sc SGPA</span>
-        </div>
-        <div class="stat reveal">
-          <span class="num mono">2</span>
-          <span class="label">Insurance internships</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="education" class="alt">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="section-num">02</span>
+<h2 class="section-title">Education</h2>
+<span class="section-rule"></span>
+</div>
+<div class="edu-grid">
+<div class="edu-card reveal">
+<div>
+<h3>M.Sc. Actuarial Science</h3>
+<div class="school">Amity School of Insurance, Banking &amp; Actuarial Science, Amity University, Noida</div>
+<span class="yr">2025 – 2027</span>
+</div>
+<span class="score">SGPA 8.98</span>
+</div>
+<div class="edu-card reveal">
+<div>
+<h3>B.B.A. — Banking, Financial Services &amp; Insurance</h3>
+<div class="school">Amity School of Insurance, Banking &amp; Actuarial Science, Amity University, Noida</div>
+<span class="yr">2022 – 2025</span>
+</div>
+<span class="score">CGPA 8.16</span>
+</div>
+<div class="edu-card reveal">
+<div>
+<h3>All India Senior School Certificate (XII), CBSE</h3>
+<div class="school">Ryan International School, Noida</div>
+<span class="yr">2022</span>
+</div>
+<span class="score">80%</span>
+</div>
+<div class="edu-card reveal">
+<div>
+<h3>All India Secondary School Examination (X), CBSE</h3>
+<div class="school">Ryan International School, Noida</div>
+<span class="yr">2020</span>
+</div>
+<span class="score">87%</span>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="education" class="alt">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="section-num">02</span>
-        <h2 class="section-title">Education</h2>
-        <span class="section-rule"></span>
-      </div>
-      <div class="edu-grid">
+<section id="certifications">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="section-num">03</span>
+<h2 class="section-title">Actuarial Examinations Cleared</h2>
+<span class="section-rule"></span>
+</div>
+<div class="cert-grid">
+<div class="cert-card reveal">
+<i class="fa-solid fa-certificate"></i>
+<div>
+<h4>CS1 — Actuarial Statistics</h4>
+<div class="meta">IFoA &middot; December 2023</div>
+</div>
+</div>
+<div class="cert-card reveal">
+<i class="fa-solid fa-certificate"></i>
+<div>
+<h4>CM1 — Actuarial Mathematics</h4>
+<div class="meta">IAI &middot; January 2025</div>
+</div>
+</div>
+<div class="cert-card reveal">
+<i class="fa-solid fa-certificate"></i>
+<div>
+<h4>CB2 — Business Economics</h4>
+<div class="meta">IAI &middot; January 2025</div>
+</div>
+</div>
+<div class="cert-card reveal">
+<i class="fa-solid fa-certificate"></i>
+<div>
+<h4>CB1 — Business Finance</h4>
+<div class="meta">IAI &middot; April 2025</div>
+</div>
+</div>
+<div class="cert-card reveal">
+<i class="fa-solid fa-certificate"></i>
+<div>
+<h4>CB3 — Business Management</h4>
+<div class="meta">IAI &middot; July 2025</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-        <div class="edu-card reveal">
-          <div>
-            <h3>M.Sc. Actuarial Science</h3>
-            <div class="school">Amity School of Insurance, Banking &amp; Actuarial Science, Amity University, Noida</div>
-            <span class="yr">2025 – 2027</span>
-          </div>
-          <span class="score">SGPA 8.98</span>
-        </div>
+<section id="experience" class="alt">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="section-num">04</span>
+<h2 class="section-title">Experience</h2>
+<span class="section-rule"></span>
+</div>
+<div class="timeline">
+<div class="tl-item reveal">
+<div class="tl-date">May – Jul 2026</div>
+<div class="tl-rail"></div>
+<div class="tl-content">
+<h3>Actuarial Intern</h3>
+<div class="org">Zuno General Insurance</div>
+<ul>
+<li>Prepared comprehensive market research summaries and product pointers, contributing to the successful launch of a new insurance product.</li>
+<li>Streamlined reporting workflows by automating repetitive analysis tasks in Excel.</li>
+</ul>
+</div>
+</div>
+<div class="tl-item reveal">
+<div class="tl-date">May – Jul 2024</div>
+<div class="tl-rail"></div>
+<div class="tl-content">
+<h3>Underwriting Intern</h3>
+<div class="org">Zuno General Insurance</div>
+<ul>
+<li>Supported the general underwriting department in risk assessment, streamlining the processing of insurance applications.</li>
+<li>Researched IRDAI's detariffication of policy wordings for general insurance companies, delivering actionable insights for new product development.</li>
+<li>Collaborated with senior underwriters to review and refine policy documentation, enhancing regulatory compliance.</li>
+</ul>
+</div>
+</div>
+<div class="tl-item reveal">
+<div class="tl-date">Dec 2023 – Jul 2024</div>
+<div class="tl-rail"></div>
+<div class="tl-content">
+<h3>Volunteer</h3>
+<div class="org">Blind Relief Association</div>
+<ul>
+<li>Supported initiatives aimed at assisting and empowering visually impaired individuals through community-focused activities.</li>
+<li>Assisted with day-to-day coordination, outreach, and administrative activities of organisational programmes.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-        <div class="edu-card reveal">
-          <div>
-            <h3>B.B.A. — Banking, Financial Services &amp; Insurance</h3>
-            <div class="school">Amity School of Insurance, Banking &amp; Actuarial Science, Amity University, Noida</div>
-            <span class="yr">2022 – 2025</span>
-          </div>
-          <span class="score">CGPA 8.16</span>
-        </div>
+<section id="leadership">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="section-num">05</span>
+<h2 class="section-title">Positions of Responsibility</h2>
+<span class="section-rule"></span>
+</div>
+<div class="timeline">
+<div class="tl-item reveal">
+<div class="tl-date">2026</div>
+<div class="tl-rail"></div>
+<div class="tl-content">
+<h3>President</h3>
+<div class="org">Placement Committee</div>
+<ul>
+<li>Leading the placement committee by driving corporate outreach, managing industry relations, coordinating student placement initiatives, and overseeing cross-functional teams.</li>
+</ul>
+</div>
+</div>
+<div class="tl-item reveal">
+<div class="tl-date">2023 – 2025</div>
+<div class="tl-rail"></div>
+<div class="tl-content">
+<h3>Vice President</h3>
+<div class="org">Banking and Actuarial Science Club</div>
+<ul>
+<li>Planned and organized alumni meets, seminars, and finance-based competitions while coordinating with faculty and external speakers.</li>
+</ul>
+</div>
+</div>
+<div class="tl-item reveal">
+<div class="tl-date">2022 – 2023</div>
+<div class="tl-rail"></div>
+<div class="tl-content">
+<h3>President</h3>
+<div class="org">Banking Club</div>
+<ul>
+<li>Organized finance and banking quizzes, promoting student engagement and knowledge-sharing through interactive competitions.</li>
+</ul>
+</div>
+</div>
+<div class="tl-item reveal">
+<div class="tl-date">2025</div>
+<div class="tl-rail"></div>
+<div class="tl-content">
+<h3>Student Coordinator</h3>
+<div class="org">Amity Youth Fest &amp; Amity Utsav</div>
+<ul>
+<li>Managed budget planning and led teams across graphic design, photography, public relations, and marketing to ensure successful event execution.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-        <div class="edu-card reveal">
-          <div>
-            <h3>All India Senior School Certificate (XII), CBSE</h3>
-            <div class="school">Ryan International School, Noida</div>
-            <span class="yr">2022</span>
-          </div>
-          <span class="score">80%</span>
-        </div>
+<section id="skills" class="alt">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="section-num">06</span>
+<h2 class="section-title">Skills</h2>
+<span class="section-rule"></span>
+</div>
+<div class="skills-block reveal">
+<div class="skills-label">Technical</div>
+<div class="pill-cloud">
+<span class="pill"><i class="fa-solid fa-chart-line"></i>Statistical Modeling — R</span>
+<span class="pill"><i class="fa-solid fa-table"></i>Excel</span>
+<span class="pill"><i class="fa-brands fa-python"></i>Basic Python</span>
+<span class="pill"><i class="fa-solid fa-magnifying-glass-chart"></i>Data Analysis</span>
+<span class="pill"><i class="fa-solid fa-shield-halved"></i>Underwriting</span>
+<span class="pill"><i class="fa-solid fa-file-contract"></i>Insurance Concepts</span>
+</div>
+</div>
+<div class="skills-block reveal">
+<div class="skills-label">Soft Skills</div>
+<div class="pill-cloud">
+<span class="pill"><i class="fa-solid fa-comments"></i>Communication</span>
+<span class="pill"><i class="fa-solid fa-people-group"></i>Leadership</span>
+<span class="pill"><i class="fa-solid fa-scale-balanced"></i>Decision Making</span>
+<span class="pill"><i class="fa-solid fa-lightbulb"></i>Critical Thinking</span>
+<span class="pill"><i class="fa-solid fa-puzzle-piece"></i>Problem-Solving</span>
+</div>
+</div>
+</div>
+</section>
 
-        <div class="edu-card reveal">
-          <div>
-            <h3>All India Secondary School Examination (X), CBSE</h3>
-            <div class="school">Ryan International School, Noida</div>
-            <span class="yr">2020</span>
-          </div>
-          <span class="score">87%</span>
-        </div>
+<section id="projects">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="section-num">07</span>
+<h2 class="section-title">Projects</h2>
+<span class="section-rule"></span>
+</div>
 
-      </div>
-    </div>
-  </section>
+<div class="project-grid">
 
-  <section id="certifications">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="section-num">03</span>
-        <h2 class="section-title">Actuarial Examinations Cleared</h2>
-        <span class="section-rule"></span>
-      </div>
-      <div class="cert-grid">
-        <div class="cert-card reveal">
-          <i class="fa-solid fa-certificate"></i>
-          <div>
-            <h4>CS1 — Actuarial Statistics</h4>
-            <div class="meta">IFoA &middot; December 2023</div>
-          </div>
-        </div>
-        <div class="cert-card reveal">
-          <i class="fa-solid fa-certificate"></i>
-          <div>
-            <h4>CM1 — Actuarial Mathematics</h4>
-            <div class="meta">IAI &middot; January 2025</div>
-          </div>
-        </div>
-        <div class="cert-card reveal">
-          <i class="fa-solid fa-certificate"></i>
-          <div>
-            <h4>CB2 — Business Economics</h4>
-            <div class="meta">IAI &middot; January 2025</div>
-          </div>
-        </div>
-        <div class="cert-card reveal">
-          <i class="fa-solid fa-certificate"></i>
-          <div>
-            <h4>CB1 — Business Finance</h4>
-            <div class="meta">IAI &middot; April 2025</div>
-          </div>
-        </div>
-        <div class="cert-card reveal">
-          <i class="fa-solid fa-certificate"></i>
-          <div>
-            <h4>CB3 — Business Management</h4>
-            <div class="meta">IAI &middot; July 2025</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<a class="project-card reveal" href="https://github.com/gaurie-srivastava/PROJECT-REPO-NAME" target="_blank" rel="noopener">
+<h3>Project Title One</h3>
+<p>One or two lines describing what the project does and what problem it solves.</p>
+<div class="project-tags">
+<span>R</span>
+<span>Excel</span>
+</div>
+<span class="project-link">View project <i class="fa-solid fa-arrow-right"></i></span>
+</a>
 
-  <section id="experience" class="alt">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="section-num">04</span>
-        <h2 class="section-title">Experience</h2>
-        <span class="section-rule"></span>
-      </div>
-      <div class="timeline">
+<a class="project-card reveal" href="https://github.com/gaurie-srivastava/PROJECT-REPO-NAME" target="_blank" rel="noopener">
+<h3>Project Title Two</h3>
+<p>One or two lines describing what the project does and what problem it solves.</p>
+<div class="project-tags">
+<span>Python</span>
+<span>Data Analysis</span>
+</div>
+<span class="project-link">View project <i class="fa-solid fa-arrow-right"></i></span>
+</a>
 
-        <div class="tl-item reveal">
-          <div class="tl-date">May – Jul 2026</div>
-          <div class="tl-rail"></div>
-          <div class="tl-content">
-            <h3>Actuarial Intern</h3>
-            <div class="org">Zuno General Insurance</div>
-            <ul>
-              <li>Prepared comprehensive market research summaries and product pointers, contributing to the successful launch of a new insurance product.</li>
-              <li>Streamlined reporting workflows by automating repetitive analysis tasks in Excel.</li>
-            </ul>
-          </div>
-        </div>
+<a class="project-card reveal" href="https://github.com/gaurie-srivastava/PROJECT-REPO-NAME" target="_blank" rel="noopener">
+<h3>Project Title Three</h3>
+<p>One or two lines describing what the project does and what problem it solves.</p>
+<div class="project-tags">
+<span>Statistics</span>
+</div>
+<span class="project-link">View project <i class="fa-solid fa-arrow-right"></i></span>
+</a>
 
-        <div class="tl-item reveal">
-          <div class="tl-date">May – Jul 2024</div>
-          <div class="tl-rail"></div>
-          <div class="tl-content">
-            <h3>Underwriting Intern</h3>
-            <div class="org">Zuno General Insurance</div>
-            <ul>
-              <li>Supported the general underwriting department in risk assessment, streamlining the processing of insurance applications.</li>
-              <li>Researched IRDAI's detariffication of policy wordings for general insurance companies, delivering actionable insights for new product development.</li>
-              <li>Collaborated with senior underwriters to review and refine policy documentation, enhancing regulatory compliance.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="tl-item reveal">
-          <div class="tl-date">Dec 2023 – Jul 2024</div>
-          <div class="tl-rail"></div>
-          <div class="tl-content">
-            <h3>Volunteer</h3>
-            <div class="org">Blind Relief Association</div>
-            <ul>
-              <li>Supported initiatives aimed at assisting and empowering visually impaired individuals through community-focused activities.</li>
-              <li>Assisted with day-to-day coordination, outreach, and administrative activities of organisational programmes.</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="leadership">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="section-num">05</span>
-        <h2 class="section-title">Positions of Responsibility</h2>
-        <span class="section-rule"></span>
-      </div>
-      <div class="timeline">
-
-        <div class="tl-item reveal">
-          <div class="tl-date">2026</div>
-          <div class="tl-rail"></div>
-          <div class="tl-content">
-            <h3>President</h3>
-            <div class="org">Placement Committee</div>
-            <ul>
-              <li>Leading the placement committee by driving corporate outreach, managing industry relations, coordinating student placement initiatives, and overseeing cross-functional teams.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="tl-item reveal">
-          <div class="tl-date">2023 – 2025</div>
-          <div class="tl-rail"></div>
-          <div class="tl-content">
-            <h3>Vice President</h3>
-            <div class="org">Banking and Actuarial Science Club</div>
-            <ul>
-              <li>Planned and organized alumni meets, seminars, and finance-based competitions while coordinating with faculty and external speakers.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="tl-item reveal">
-          <div class="tl-date">2022 – 2023</div>
-          <div class="tl-rail"></div>
-          <div class="tl-content">
-            <h3>President</h3>
-            <div class="org">Banking Club</div>
-            <ul>
-              <li>Organized finance and banking quizzes, promoting student engagement and knowledge-sharing through interactive competitions.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="tl-item reveal">
-          <div class="tl-date">2025</div>
-          <div class="tl-rail"></div>
-          <div class="tl-content">
-            <h3>Student Coordinator</h3>
-            <div class="org">Amity Youth Fest &amp; Amity Utsav</div>
-            <ul>
-              <li>Managed budget planning and led teams across graphic design, photography, public relations, and marketing to ensure successful event execution.</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="alt">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="section-num">06</span>
-        <h2 class="section-title">Skills</h2>
-        <span class="section-rule"></span>
-      </div>
-
-      <div class="skills-block reveal">
-        <div class="skills-label">Technical</div>
-        <div class="pill-cloud">
-          <span class="pill"><i class="fa-solid fa-chart-line"></i>Statistical Modeling — R</span>
-          <span class="pill"><i class="fa-solid fa-table"></i>Excel</span>
-          <span class="pill"><i class="fa-brands fa-python"></i>Basic Python</span>
-          <span class="pill"><i class="fa-solid fa-magnifying-glass-chart"></i>Data Analysis</span>
-          <span class="pill"><i class="fa-solid fa-shield-halved"></i>Underwriting</span>
-          <span class="pill"><i class="fa-solid fa-file-contract"></i>Insurance Concepts</span>
-        </div>
-      </div>
-
-      <div class="skills-block reveal">
-        <div class="skills-label">Soft Skills</div>
-        <div class="pill-cloud">
-          <span class="pill"><i class="fa-solid fa-comments"></i>Communication</span>
-          <span class="pill"><i class="fa-solid fa-people-group"></i>Leadership</span>
-          <span class="pill"><i class="fa-solid fa-scale-balanced"></i>Decision Making</span>
-          <span class="pill"><i class="fa-solid fa-lightbulb"></i>Critical Thinking</span>
-          <span class="pill"><i class="fa-solid fa-puzzle-piece"></i>Problem-Solving</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
+</div>
+</div>
+</section>
 
 </main>
 
 <footer>
-  <div class="foot-name">Gaurie Srivastava</div>
-  <div class="foot-links">
-    <a href="mailto:gauriesrivastava@gmail.com" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-    <a href="tel:+917982583477" title="Phone" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-    <a href="#main" title="Back to top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
-  </div>
-  <div class="copyright mono">&copy; <span id="year"></span> Gaurie Srivastava — built with care.</div>
+<div class="foot-name">Gaurie Srivastava</div>
+<div class="foot-links">
+<a href="mailto:gauriesrivastava@gmail.com" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+<a href="tel:+917982583477" title="Phone" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+<a href="#main" title="Back to top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+</div>
+<div class="copyright mono">&copy; <span id="year"></span> Gaurie Srivastava — built with care.</div>
 </footer>
 
 <div id="toast">Email copied to clipboard</div>
 
 <script>
-  // Year
-  document.getElementById('year').textContent = new Date().getFullYear();
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Scroll progress bar
-  const progressBar = document.getElementById('progress-bar');
-  function updateProgress(){
-    const h = document.documentElement;
-    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-    progressBar.style.width = scrolled + '%';
-  }
-  document.addEventListener('scroll', updateProgress, { passive:true });
-  updateProgress();
+// Scroll progress bar
+const progressBar = document.getElementById('progress-bar');
+function updateProgress(){
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progressBar.style.width = scrolled + '%';
+}
+document.addEventListener('scroll', updateProgress, { passive:true });
+updateProgress();
 
-  // Mobile nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open);
-    navToggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', open);
+  navToggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+    navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
   });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', false);
-      navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
-    });
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('main section, main header');
+const navAnchors = document.querySelectorAll('.nav-links a');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.getAttribute('id');
+    if(!id) return;
+    const link = document.querySelector('.nav-links a[href="#' + id + '"]');
+    if(!link) return;
+    if(entry.isIntersecting){
+      navAnchors.forEach(a => a.classList.remove('active'));
+      link.classList.add('active');
+    }
   });
+}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+sections.forEach(s => { if(s.id) navObserver.observe(s); });
 
-  // Active nav link on scroll
-  const sections = document.querySelectorAll('main section, main header');
-  const navAnchors = document.querySelectorAll('.nav-links a');
-  const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const id = entry.target.getAttribute('id');
-      if(!id) return;
-      const link = document.querySelector('.nav-links a[href="#' + id + '"]');
-      if(!link) return;
-      if(entry.isIntersecting){
-        navAnchors.forEach(a => a.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-  sections.forEach(s => { if(s.id) navObserver.observe(s); });
-
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => revealObserver.observe(el));
-
-  // Copy email on click
-  const emailBtn = document.getElementById('emailBtn');
-  const toast = document.getElementById('toast');
-  emailBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText('gauriesrivastava@gmail.com').then(() => {
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 1800);
-    }).catch(() => {
-      window.location.href = 'mailto:gauriesrivastava@gmail.com';
-    });
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
   });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Copy email on click
+const emailBtn = document.getElementById('emailBtn');
+const toast = document.getElementById('toast');
+emailBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText('gauriesrivastava@gmail.com').then(() => {
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  }).catch(() => {
+    window.location.href = 'mailto:gauriesrivastava@gmail.com';
+  });
+});
 </script>
-
 </body>
 </html>
